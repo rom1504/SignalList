@@ -2,7 +2,7 @@
 #define SIGNALLISTADAPTER_H
 
 #include <QAbstractListModel>
-#include "../modele/signallist.h"
+#include "model/signallist.h"
 
 template <class T> class SignalListAdapter : public QAbstractListModel
 {

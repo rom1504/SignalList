@@ -7,6 +7,9 @@ MOC_DIR = $$OBJECTS_DIR
 RCC_DIR = $$OBJECTS_DIR
 UI_DIR = $$OBJECTS_DIR
 
+VPATH = source
+INCLUDEPATH = source
+
 
 SOURCES += model/signallist.cpp
 
