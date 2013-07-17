@@ -2,6 +2,7 @@
 #define SIGNALLIST_HXX
 
 #include "signallist.h"
+#include <algorithm>
 
 
 template <class T> SignalList<T>::SignalList(std::function<bool(T,T)> comp, bool ordered, QObject * parent) : SignalListBase(parent),mOrdered(ordered),mComp(comp)
@@ -58,6 +59,13 @@ template <class T> T SignalList<T>::get(int numero)
 template <class T> T SignalList<T>::get(int numero) const
 {
     return mList.at(numero);
+}
+
+template <class T> void SignalList<T>::shuffle()
+{
+    emit beginReset();
+    std::random_shuffle(mList.begin(),mList.end());
+    emit endReset();
 }
 
 

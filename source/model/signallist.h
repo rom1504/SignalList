@@ -31,7 +31,8 @@ public:
     T get(int numero) const;
     bool contient(T element) const;
     void clear();
-// add begin load and end load maybe (and not emit anything except beginreset and endreset between those) ?
+    void shuffle();
+// add begin load and end load maybe (and not emit anything except beginreset and endreset between those) ? not essential
 
 private:
     QList<T> mList;
