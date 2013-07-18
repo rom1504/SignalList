@@ -3,7 +3,7 @@
 
 #include "signallistadapter.h"
 
-template <class T> SignalListAdapter<T>::SignalListAdapter(SignalList<T> *list, QObject *parent) : QAbstractListModel(parent),mList(list)
+template <class T> SignalListAdapterBase<T>::SignalListAdapterBase(SignalList<T> *list, QObject *parent) : QAbstractListModel(parent),mList(list)
 {
     connect(mList,&SignalListBase::debutAjout,[this](int numero){beginInsertRows(QModelIndex(),numero,numero);});
     connect(mList,&SignalListBase::finAjout,[this](int){endInsertRows();});// je pourrais supprimer le int de SignalListBase::finAjout
@@ -13,10 +13,15 @@ template <class T> SignalListAdapter<T>::SignalListAdapter(SignalList<T> *list, 
     connect(mList,&SignalListBase::endReset,[this](){endResetModel();});
 }
 
-template <class T> int SignalListAdapter<T>::rowCount (const QModelIndex &) const
+template <class T> int SignalListAdapterBase<T>::rowCount (const QModelIndex &) const
 {
     if(mList==nullptr) return 0;
     return mList->nombre();
+}
+
+template <class T> SignalListAdapter<T>::SignalListAdapter(SignalList<T> * list,QObject *parent) : SignalListAdapterBase<T>(list,parent)
+{
+
 }
 
 #endif // SIGNALLISTADAPTER_HXX
