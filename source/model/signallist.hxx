@@ -10,7 +10,7 @@ template <class T> SignalList<T>::SignalList(std::function<bool(T,T)> comp, bool
 
 }
 
-template <class T> SignalList<T>::SignalList() : SignalList([](T,T){return false;})
+template <class T> SignalList<T>::SignalList(QObject * parent) : SignalList([](T,T){return false;},false,parent)
 {
 
 }

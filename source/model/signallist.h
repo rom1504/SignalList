@@ -23,18 +23,18 @@ template <class T> class SignalList : public SignalListBase
 {
 public:
     SignalList(std::function<bool(T,T)> comp,bool ordered=false,QObject * parent=0); // could inherit with for ordered instead of if (slower) parameterization
-    SignalList();
+    SignalList(QObject * parent=0);
     void ajout(T element);
     void suppression(T element);
     int nombre() const;
-    T get(int numero);
+    T get(int numero); // voir pour fournir un iterateur (constant au moins)
     T get(int numero) const;
     bool contient(T element) const;
     void clear();
     void shuffle();
 // add begin load and end load maybe (and not emit anything except beginreset and endreset between those) ? not essential
 
-private:
+protected:
     QList<T> mList;
     bool mOrdered;
     std::function<bool(T,T)> mComp;
