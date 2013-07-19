@@ -17,18 +17,29 @@ template <class T> SignalList<T>::SignalList(QObject * parent) : SignalList([](T
 
 template <class T> void SignalList<T>::ajout(T element)
 {
-    int numeroElement=mOrdered ? std::find_if(mList.begin(),mList.end(),[this,element](T a){return mComp(element,a);})-mList.begin() : mList.size()-1;
+    int numeroElement=mOrdered ? std::find_if(mList.begin(),mList.end(),[this,element](T a){return mComp(element,a);})-mList.begin() : mList.size();
     emit debutAjout(numeroElement);
     mList.insert(numeroElement,element);
-    emit finAjout(numeroElement);
+    emit finAjout();
 }
 
 template <class T> void SignalList<T>::suppression(T element)
 {
-    int numeroElement=mList.indexOf(element);
-    emit debutSupression(numeroElement);
-    mList.removeAt(numeroElement);
-    emit finSupression(numeroElement);
+    remove(mList.indexOf(element));
+}
+
+
+template <class T> void SignalList<T>::set(int number,T value)
+{
+    mList[number]=value;
+    emit dataChanged(number,number);
+}
+
+template <class T> void SignalList<T>::remove(int row)
+{
+    emit debutSupression(row);
+    mList.removeAt(row);
+    emit finSupression();
 }
 
 

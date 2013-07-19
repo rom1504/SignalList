@@ -17,7 +17,7 @@ SOURCES += model/signallist.cpp \
 HEADERS  +=  adapter/signallistadapter.h \
 	adapter/signallistadapter.hxx \
 	model/signallist.h \
-	model/signallist.hxx
+        model/signallist.hxx \
 	adapter/qstringsignallistadapter.h
 
 QMAKE_CXXFLAGS += -std=c++11

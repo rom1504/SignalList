@@ -12,11 +12,13 @@ public:
 
 signals:
     void debutAjout(int position);
-    void finAjout(int position);
+    void finAjout();
     void debutSupression(int position);
-    void finSupression(int position);
+    void finSupression();
     void beginReset();
     void endReset();
+    void dataChanged(int begin,int end);
+    void endOfAChange();
 };
 //when ready put all this on a different module ( / library ) and possibly use it inside sale contract filler
 template <class T> class SignalList : public SignalListBase
@@ -26,9 +28,11 @@ public:
     SignalList(QObject * parent=0);
     void ajout(T element);
     void suppression(T element);
+    void remove(int row);
     int nombre() const;
     T get(int numero); // voir pour fournir un iterateur (constant au moins)
     T get(int numero) const;
+    void set(int number,T value);
     bool contient(T element) const;
     void clear();
     void shuffle();
