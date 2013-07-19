@@ -11,12 +11,14 @@ VPATH = source
 INCLUDEPATH = source
 
 
-SOURCES += model/signallist.cpp
+SOURCES += model/signallist.cpp \
+	adapter/qstringsignallistadapter.cpp
 
 HEADERS  +=  adapter/signallistadapter.h \
 	adapter/signallistadapter.hxx \
 	model/signallist.h \
 	model/signallist.hxx
+	adapter/qstringsignallistadapter.h
 
 QMAKE_CXXFLAGS += -std=c++11
 
