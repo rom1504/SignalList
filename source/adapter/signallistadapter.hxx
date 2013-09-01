@@ -20,6 +20,12 @@ template <class T> int SignalListAdapterBase<T>::rowCount (const QModelIndex &) 
     return mList->nombre();
 }
 
+
+template <class T> T SignalListAdapterBase<T>::at(int row)
+{
+    return mList->get(row);
+}
+
 template <class T> SignalListAdapter<T>::SignalListAdapter(SignalList<T> * list,QObject *parent) : SignalListAdapterBase<T>(list,parent)
 {
 

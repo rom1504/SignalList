@@ -9,6 +9,7 @@ template <class T> class SignalListAdapterBase : public QAbstractListModel
 public:
     explicit SignalListAdapterBase(SignalList<T> * list,QObject *parent = 0);
     int rowCount (const QModelIndex & = QModelIndex()) const;
+    T at(int row);
 
 protected:
     SignalList<T> * mList;

@@ -18,7 +18,9 @@ HEADERS  +=  adapter/signallistadapter.h \
 	adapter/signallistadapter.hxx \
 	model/signallist.h \
         model/signallist.hxx \
-	adapter/qstringsignallistadapter.h
+	adapter/qstringsignallistadapter.h \
+    source/adapter/signallistfilter.h \
+    source/adapter/signallistfilter.hxx
 
 QMAKE_CXXFLAGS += -std=c++11
 
