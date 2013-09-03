@@ -21,7 +21,8 @@ template <class T> void SignalListFilter<T>::setSourceModel(SignalListAdapter<T>
 
 template <class T> bool SignalListFilter<T>::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
 {
-    return mFilter(mAdapter->at(sourceModel()->index(sourceRow,0,sourceParent).row()));
+    QVariant v=mAdapter->data(sourceModel()->index(sourceRow,0,sourceParent),FullItemRole);
+    return mFilter(v.value<T>());
 }
 
 #endif // SIGNALLISTFILTER_HXX

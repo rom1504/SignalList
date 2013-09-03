@@ -7,16 +7,18 @@ SignalListAdapter<QString>::SignalListAdapter(SignalList<QString> *list, QObject
 {
 }
 
-QVariant SignalListAdapter<QString>::data ( const QModelIndex & index, int role ) const
+QVariant SignalListAdapter<QString>::data (const QModelIndex & index, int role ) const
 {
     if (!index.isValid())
-         return QVariant();
+     return QVariant();
 
-     if (index.row() >= mList->nombre())
-         return QVariant();
+    if (index.row() >= mList->nombre())
+     return QVariant();
 
-     if(role == Qt::DisplayRole || role == Qt::EditRole) return mList->get(index.row());
-     else return QVariant();
+    if(role==FullItemRole) return QVariant::fromValue(mList->get(index.row()));
+
+    if(role == Qt::DisplayRole || role == Qt::EditRole) return mList->get(index.row());
+    else return QVariant();
 }
 
 bool SignalListAdapter<QString>::setData(const QModelIndex & index, const QVariant & value, int role)
