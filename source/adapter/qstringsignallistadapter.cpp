@@ -12,7 +12,7 @@ QVariant SignalListAdapter<QString>::data (const QModelIndex & index, int role )
     if (!index.isValid())
      return QVariant();
 
-    if (index.row() >= mList->nombre())
+    if (index.row() >= mList->size())
      return QVariant();
 
     if(role==FullItemRole) return QVariant::fromValue(mList->get(index.row()));
@@ -42,7 +42,7 @@ Qt::ItemFlags SignalListAdapter<QString>::flags(const QModelIndex &) const
 bool SignalListAdapter<QString>::insertRows(int row, int count, const QModelIndex & parent) // mettre ce genre de truc dans l'adapter général ?
 {
     beginInsertRows(parent,row,row+count-1);
-    for(int i=0;i<count;i++) mList->ajout(QString());
+    for(int i=0;i<count;i++) mList->append(QString());
     endInsertRows();
     return true;
 }

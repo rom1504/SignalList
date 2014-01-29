@@ -15,15 +15,15 @@ template <class T> SignalList<T>::SignalList(QObject * parent) : SignalList([](T
 
 }
 
-template <class T> void SignalList<T>::ajout(T element)
+template <class T> void SignalList<T>::append(T element)
 {
-    int numeroElement=mOrdered ? std::find_if(mList.begin(),mList.end(),[this,element](T a){return mComp(element,a);})-mList.begin() : mList.size();
-    emit debutAjout(numeroElement);
-    mList.insert(numeroElement,element);
-    emit finAjout();
+    int elementNumber=mOrdered ? std::find_if(mList.begin(),mList.end(),[this,element](T a){return mComp(element,a);})-mList.begin() : mList.size();
+    emit beginInsert(elementNumber);
+    mList.insert(elementNumber,element);
+    emit endInsert();
 }
 
-template <class T> void SignalList<T>::suppression(T element)
+template <class T> void SignalList<T>::remove(T element)
 {
     remove(mList.indexOf(element));
 }
@@ -37,9 +37,9 @@ template <class T> void SignalList<T>::set(int number,T value)
 
 template <class T> void SignalList<T>::remove(int row)
 {
-    emit debutSupression(row);
+    emit beginRemove(row);
     mList.removeAt(row);
-    emit finSupression();
+    emit endRemove();
 }
 
 
@@ -51,25 +51,25 @@ template <class T> void SignalList<T>::clear()
 }
 
 
-template <class T> bool SignalList<T>::contient(T element) const
+template <class T> bool SignalList<T>::contains(T element) const
 {
     return mList.contains(element);
 }
 
-template <class T> int SignalList<T>::nombre() const
+template <class T> int SignalList<T>::size() const
 {
     return mList.size();
 }
 
-template <class T> T SignalList<T>::get(int numero)
+template <class T> T SignalList<T>::get(int number)
 {
-    return mList.at(numero);
+    return mList.at(number);
 }
 
 
-template <class T> T SignalList<T>::get(int numero) const
+template <class T> T SignalList<T>::get(int number) const
 {
-    return mList.at(numero);
+    return mList.at(number);
 }
 
 template <class T> void SignalList<T>::shuffle()

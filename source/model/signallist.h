@@ -11,10 +11,10 @@ public:
     SignalListBase(QObject * parent=0);
 
 signals:
-    void debutAjout(int position);
-    void finAjout();
-    void debutSupression(int position);
-    void finSupression();
+    void beginInsert(int position);
+    void endInsert();
+    void beginRemove(int position);
+    void endRemove();
     void beginReset();
     void endReset();
     void dataChanged(int begin,int end);
@@ -26,14 +26,14 @@ template <class T> class SignalList : public SignalListBase
 public:
     SignalList(std::function<bool(T,T)> comp,bool ordered=false,QObject * parent=0); // could inherit with for ordered instead of if (slower) parameterization
     SignalList(QObject * parent=0);
-    void ajout(T element);
-    void suppression(T element);
+    void append(T element);
+    void remove(T element);
     void remove(int row);
-    int nombre() const;
-    T get(int numero); // voir pour fournir un iterateur (constant au moins)
-    T get(int numero) const;
+    int size() const;
+    T get(int number); // voir pour fournir un iterateur (constant au moins)
+    T get(int number) const;
     void set(int number,T value);
-    bool contient(T element) const;
+    bool contains(T element) const;
     void clear();
     void shuffle();
 // add begin load and end load maybe (and not emit anything except beginreset and endreset between those) ? not essential
