@@ -12,17 +12,26 @@ enum Roles
 template <class T> class SignalListAdapterBase : public QAbstractListModel
 {
 public:
-    explicit SignalListAdapterBase(SignalList<T> * list,QObject *parent = 0);
+    explicit SignalListAdapterBase(SignalList<T> * list,QString fullItemRoleName="fullItem",QObject *parent = 0);
     int rowCount (const QModelIndex & = QModelIndex()) const;
+    QVariant data ( const QModelIndex & index, int role = Qt::DisplayRole ) const;
+    Qt::ItemFlags flags(const QModelIndex & index) const;
+
+protected:
+    QHash<int, QByteArray> roleNames() const;
 
 protected:
     SignalList<T> * mList;
+
+private:
+    QString mFullItemRoleName;
 };
 
 template <class T> class SignalListAdapter : public SignalListAdapterBase<T>
 {
 public:
-    explicit SignalListAdapter(SignalList<T> * list,QObject *parent = 0);
+    using SignalListAdapterBase<T>::SignalListAdapterBase;
+
 };
 
 #include "signallistadapter.hxx"

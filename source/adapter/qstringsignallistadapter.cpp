@@ -3,7 +3,7 @@
 #include <QDebug>
 
 SignalListAdapter<QString>::SignalListAdapter(SignalList<QString> *list, QObject *parent) :
-    SignalListAdapterBase(list,parent)
+    SignalListAdapterBase(list,"qstring",parent)
 {
 }
 
