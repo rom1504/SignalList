@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <functional>
+#include <QList>
 
 class SignalListBase : public QObject
 {
@@ -36,6 +37,9 @@ public:
     bool contains(T element) const;
     void clear();
     void shuffle();
+    typename QList<T>::const_iterator constBegin() const;
+    typename QList<T>::const_iterator constEnd() const;
+
 // add begin load and end load maybe (and not emit anything except beginreset and endreset between those) ? not essential
 
 protected:
