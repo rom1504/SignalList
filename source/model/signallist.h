@@ -39,6 +39,8 @@ public:
     void shuffle();
     typename QList<T>::const_iterator constBegin() const;
     typename QList<T>::const_iterator constEnd() const;
+    typename QList<T>::const_iterator begin() const;
+    typename QList<T>::const_iterator end() const;
 
 // add begin load and end load maybe (and not emit anything except beginreset and endreset between those) ? not essential
 

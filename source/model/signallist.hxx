@@ -61,6 +61,17 @@ template <class T> typename QList<T>::const_iterator SignalList<T>::constEnd() c
     return mList.constEnd();
 }
 
+
+template <class T> typename QList<T>::const_iterator SignalList<T>::begin() const
+{
+    return mList.constBegin();
+}
+
+template <class T> typename QList<T>::const_iterator SignalList<T>::end() const
+{
+    return mList.constEnd();
+}
+
 template <class T> bool SignalList<T>::contains(T element) const
 {
     return mList.contains(element);
