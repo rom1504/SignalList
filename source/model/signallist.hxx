@@ -5,12 +5,13 @@
 #include <algorithm>
 
 
-template <class T> SignalList<T>::SignalList(std::function<bool(T,T)> comp, bool ordered, QObject * parent) : SignalListBase(parent),mOrdered(ordered),mComp(comp)
+template <class T> SignalList<T>::SignalList(std::function<bool(T,T)> comp, QObject * parent) :
+    SignalListBase(parent),mOrdered(true),mComp(comp)
 {
-
 }
 
-template <class T> SignalList<T>::SignalList(QObject * parent) : SignalList([](T,T){return false;},false,parent)
+template <class T> SignalList<T>::SignalList(QObject * parent) :
+    SignalListBase(parent),mOrdered(false),mComp([](T,T){return false;})
 {
 
 }

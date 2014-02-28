@@ -25,7 +25,7 @@ signals:
 template <class T> class SignalList : public SignalListBase
 {
 public:
-    SignalList(std::function<bool(T,T)> comp,bool ordered=false,QObject * parent=0); // could inherit with for ordered instead of if (slower) parameterization
+    SignalList(std::function<bool(T,T)> comp, QObject * parent=0); // could inherit with for ordered instead of if (slower) parameterization
     SignalList(QObject * parent=0);
     void append(T element);
     void remove(T element);
