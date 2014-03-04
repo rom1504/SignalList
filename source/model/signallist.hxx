@@ -16,12 +16,13 @@ template <class T> SignalList<T>::SignalList(QObject * parent) :
 
 }
 
-template <class T> void SignalList<T>::append(T element)
+template <class T> int SignalList<T>::append(T element)
 {
     int elementNumber=mOrdered ? std::find_if(mList.begin(),mList.end(),[this,element](T a){return mComp(element,a);})-mList.begin() : mList.size();
     emit beginInsert(elementNumber);
     mList.insert(elementNumber,element);
     emit endInsert();
+    return elementNumber;
 }
 
 template <class T> void SignalList<T>::remove(T element)
