@@ -103,4 +103,15 @@ template <class T> void SignalList<T>::shuffle()
 }
 
 
+template <class T> void SignalList<T>::elementChanged(T element)
+{
+    auto it=std::find(mList.begin(),mList.end(),element);
+    if(it!=mList.end())
+    {
+        int index=it-mList.begin();
+        emit dataChanged(index,index);
+    }
+}
+
+
 #endif // SIGNALLIST_HXX
