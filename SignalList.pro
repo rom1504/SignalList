@@ -1,7 +1,7 @@
 QT       += core gui widgets
 
 TEMPLATE = lib
-CONFIG+= staticlib
+CONFIG+= staticlib c++11
 OBJECTS_DIR = temp/
 MOC_DIR = $$OBJECTS_DIR
 RCC_DIR = $$OBJECTS_DIR
@@ -23,6 +23,7 @@ HEADERS  +=  adapter/signallistadapter.h \
     source/adapter/signallistfilter.hxx
 
 QMAKE_CXXFLAGS += -std=c++11
+
 
 OTHER_FILES += \
     README.md \
