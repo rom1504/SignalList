@@ -1,7 +1,7 @@
 QT       += core gui widgets
 
 TEMPLATE = lib
-CONFIG+= staticlib c++11
+CONFIG+= c++11
 OBJECTS_DIR = temp/
 MOC_DIR = $$OBJECTS_DIR
 RCC_DIR = $$OBJECTS_DIR
